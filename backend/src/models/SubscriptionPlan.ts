@@ -1,0 +1,4 @@
+import { Schema, model, models, type InferSchemaType, type Model } from "mongoose";
+const subscriptionPlanSchema = new Schema({ name: { type: String, required: true, unique: true, trim: true }, price: { type: Number, required: true, min: 0 }, billingInterval: { type: String, enum: ["monthly", "yearly"], required: true }, description: { type: String, required: true, trim: true, maxlength: 500 }, limits: { telecallers: { type: Number, required: true, min: 1 }, leads: { type: Number, required: true, min: 1 } }, isActive: { type: Boolean, default: true, required: true, index: true } }, { timestamps: true, versionKey: false });
+export type SubscriptionPlan = InferSchemaType<typeof subscriptionPlanSchema>;
+export const SubscriptionPlanModel: Model<SubscriptionPlan> = (models.SubscriptionPlan as Model<SubscriptionPlan> | undefined) ?? model<SubscriptionPlan>("SubscriptionPlan", subscriptionPlanSchema);

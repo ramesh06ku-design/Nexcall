@@ -1,0 +1,3 @@
+import{Badge}from"@/components/ui/badge";import type{CallOutcome}from"@/types";
+export const outcomeLabels:Record<CallOutcome,string>={answered:"Answered",no_answer:"No Answer",busy:"Busy",callback_requested:"Callback Requested",interested:"Interested",not_interested:"Not Interested",wrong_number:"Wrong Number",converted:"Converted"};
+export function CallOutcomeBadge({outcome}:{outcome:CallOutcome}){return <Badge variant={outcome==="converted"||outcome==="interested"||outcome==="answered"?"success":outcome==="no_answer"||outcome==="wrong_number"?"neutral":"default"}>{outcomeLabels[outcome]}</Badge>;}

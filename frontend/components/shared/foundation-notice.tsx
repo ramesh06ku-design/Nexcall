@@ -1,0 +1,2 @@
+import { FlaskConical } from "lucide-react";
+export function FoundationNotice() { return <div className="mb-6 flex gap-3 rounded-2xl border border-violet-100 bg-primary-soft/50 p-4 text-sm"><FlaskConical className="mt-0.5 size-4 shrink-0 text-primary" /><p><b>Development preview:</b> Dashboard figures below are clearly isolated mock data. API-ready components will receive live data in a later product phase.</p></div>; }

@@ -1,0 +1,26 @@
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import express from "express";
+import { env } from "./config/env.js";
+import { errorHandler, notFoundHandler } from "./middleware/errorHandler.js";
+import adminRoutes from "./routes/admin.routes.js";
+import agenciesRoutes from "./routes/agencies.routes.js";
+import agencyRoutes from "./routes/agency.routes.js";
+import authRoutes from "./routes/auth.routes.js";
+import plansRoutes from "./routes/plans.routes.js";
+import workerRoutes from "./routes/worker.routes.js";
+
+export const app = express();
+app.disable("x-powered-by");
+app.use(cors({ origin: env.FRONTEND_URL, credentials: true, methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"] }));
+app.use(express.json({ limit: "1mb" }));
+app.use(cookieParser());
+app.get("/api/health", (_request, response) => response.json({ success: true, data: { service: "nexcall-api", status: "healthy" } }));
+app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/agencies", agenciesRoutes);
+app.use("/api/plans", plansRoutes);
+app.use("/api/agency", agencyRoutes);
+app.use("/api/worker", workerRoutes);
+app.use(notFoundHandler);
+app.use(errorHandler);

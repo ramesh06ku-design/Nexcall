@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-soft: var(--primary-soft);
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-manrope);
+  --shadow-card: 0 1px 2px rgba(20, 30, 55, .03), 0 12px 32px rgba(20, 30, 55, .055);
+}
+
+:root {
+  --background: #f7f8fb;
+  --foreground: #172033;
+  --card: #ffffff;
+  --muted: #f0f2f6;
+  --muted-foreground: #6c7486;
+  --border: #e5e8ef;
+  --primary: #6157e8;
+  --primary-strong: #4d43d4;
+  --primary-soft: #eeedff;
+}
+
+* { border-color: var(--border); }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-manrope), sans-serif; }
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+::selection { background: #dcd9ff; color: #2e287f; }
+
+.dot-grid {
+  background-image: radial-gradient(rgba(97, 87, 232, .16) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
